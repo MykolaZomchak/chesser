@@ -14,4 +14,14 @@ public class Wall extends Figure {
     protected boolean isAvailable(Color color) {
         return false;
     }
+
+    @Override
+    protected boolean isFree() {
+        return false;
+    }
+
+    @Override
+    protected boolean isEnemy(Figure figure) {
+        return false;
+    }
 }

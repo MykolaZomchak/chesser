@@ -26,7 +26,7 @@ public abstract class Figure {
         this.y = y;
     }
 
-    public List<Move> moves(){
+    public final List<Move> moves(){
         moves = new ArrayList<>(8);
         addMoves();
         return moves;
@@ -34,7 +34,7 @@ public abstract class Figure {
 
     protected abstract void addMoves();
 
-    protected void addMove(int y, int x){
+    protected final void addMove(int y, int x){
         if(figure(y, x).isAvailable(color()))
             moves.add(createMove(this, figure(y, x)));
     }
@@ -51,26 +51,30 @@ public abstract class Figure {
         return false;
     }
 
-    protected Figure figure(int y, int x){
+    protected boolean isEnemy(Figure figure){
+        return color().equals(figure.color());
+    }
+
+    protected final Figure figure(int y, int x){
         return board().figure(getX() + (color.equals(Color.WHITE) ? x : -x), getY() + (color.equals(Color.WHITE) ? y : -y));
     }
 
-    protected Figure figure(int y){
+    protected final Figure figure(int y){
         return figure(y, 0);
     }
 
-    public int getX(){
+    public final int getX(){
         return x;
     }
-    public int getY(){
+    public final int getY(){
         return y;
     }
 
-    protected Board board(){
+    protected final Board board(){
         return board;
     }
 
-    protected Color color(){
+    protected final Color color(){
         return color;
     }
 

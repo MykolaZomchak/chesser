@@ -19,4 +19,9 @@ public class NullFigure extends Figure {
     protected boolean isFree() {
         return true;
     }
+
+    @Override
+    protected boolean isEnemy(Figure figure) {
+        return false;
+    }
 }
